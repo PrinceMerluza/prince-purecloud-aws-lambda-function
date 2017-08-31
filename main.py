@@ -64,7 +64,7 @@ def main_handler(event, context):
 	try:
 		for k, v in participantDetailsDict.items():
 			api_response = usersApi.get_user(v['user_id'])
-			v['user_name'] = api_response.username
+			v['user_name'] = api_response.name
 			v['email'] = api_response.email
 			
 	except ApiException as e:
@@ -75,7 +75,7 @@ def main_handler(event, context):
 	if queriedValues == 'none':
 		return "ERROR"
 	else:
-		return 'User ID: ' + queriedValues['user_id'] + '\nUser Name: ' + queriedValues['user_name'] + '\nEmail: ' + queriedValues['email']
+		return 'User Name: ' + queriedValues['user_name'] + '; Email: ' + queriedValues['email']
 	
 	#for k, v in participantDetailsDict.items():
 	#	print(k + ' : ' + v['user_id'] + ' : ' + v['user_name'] + ' : ' + v['email'])
